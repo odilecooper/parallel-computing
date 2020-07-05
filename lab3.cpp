@@ -49,34 +49,17 @@ void compute_velocities(int index) {
 
 void compute_positions(int index) {
 	ball_list[index].px += ball_list[index].vx * delta_t;
-	if (ball_list[index].px > L)
-		ball_list[index].px = L;
-	else if (ball_list[index].px < 0)
-		ball_list[index].px = 0;
-
 	ball_list[index].py += ball_list[index].vy * delta_t;
-	if (ball_list[index].py > L)
-		ball_list[index].py = L;
-	else if (ball_list[index].py < 0)
-		ball_list[index].py = 0;
 
 	// printf("%d p: %lf %lf\n",index,ball_list[index].px,ball_list[index].py);
 }
 
 void print() {
 	int table[size][size]={0};
-	int i, j;
+	int i;
 	for (i = 0; i < N; i++) {
-		table[(int)(ball_list[i].px*100)][(int)(ball_list[i].py*100)]++;
+		printf("ball %3d: (%lf, %lf)\n", i, ball_list[i].px, ball_list[i].py);
 	}
-	for (i = 0; i < size; i++) {
-		for (j = 0; j < size; j++) {
-			// printf("(%lf, %lf) ", i*size+j, ball_list[i * size + j].px, ball_list[i * size + j].py);
-			printf("%3d", table[i][j]);
-		}
-		printf("\n");
-	}
-	printf("end of printing\n\n");
 }
 
 int main(int argc, char* argv[]) {
